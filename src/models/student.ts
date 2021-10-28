@@ -8,7 +8,9 @@ import {
   UpdatedAt,
   DeletedAt,
   DataType,
-  AutoIncrement
+  AutoIncrement,
+  Validate,
+  Unique
 
 } from 'sequelize-typescript'
 
@@ -36,6 +38,8 @@ export class Student extends Model {
     lastName: string
 
     @AllowNull(false)
+    @Unique(true)
+    @Validate({ isEmail: true })
     @Column({ type: DataType.STRING })
     email:string
 
