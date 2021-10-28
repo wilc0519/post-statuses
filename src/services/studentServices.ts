@@ -10,8 +10,19 @@ const createStudents = async (firstName, lastName, email, cellPhone, dateOfBirth
     throw error
   }
 }
-const findAllStudents = async () => {
+const findAllStudents = async (emailToFindStudent) => {
   try {
+    if (emailToFindStudent) {
+      const student = await Student.findOne({
+        where: {
+          email: emailToFindStudent
+        }
+      })
+      if (student) {
+        return student
+      }
+      return 'Student not found'
+    }
     const students = await Student.findAll()
     return students
   } catch (error) {
