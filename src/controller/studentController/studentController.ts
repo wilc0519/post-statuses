@@ -18,3 +18,13 @@ router.post('/students', async (req, res) => {
     res.status(500).send({ error: 'error' })
   }
 })
+
+router.get('/students', async (req, res) => {
+  try {
+    const students = await studentServices.findAllStudents()
+    res.status(200).send(students)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({ error: 'error' })
+  }
+})
