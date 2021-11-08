@@ -32,7 +32,6 @@ const findStudents = async (emailToFindStudent) => {
 }
 
 const updateStudent = async (need, studentId) => {
-  console.log(need)
   const updates = Object.keys(need)
   const allowedUpdates = ['firstName', 'lastName', 'email', 'dateOfBirth', 'cellPhone']
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -42,9 +41,22 @@ const updateStudent = async (need, studentId) => {
   try {
     const student = await Student.findByPk(studentId)
     if (student != null) {
-      console.log(student)
       student?.update(need)
       return student
+    }
+    return 'student not found'
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+const deleteStudent = async (studentId:number) => {
+  try {
+    const student:any = await Student.findByPk(studentId)
+    if (student) {
+      await student.destroy()
+      return 'student deleted'
     }
     return 'student not found'
   } catch (error) {
@@ -56,5 +68,6 @@ const updateStudent = async (need, studentId) => {
 export default {
   createStudents,
   findStudents,
-  updateStudent
+  updateStudent,
+  deleteStudent
 }
