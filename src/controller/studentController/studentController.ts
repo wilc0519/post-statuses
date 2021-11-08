@@ -29,3 +29,17 @@ router.get('/students', async (req, res) => {
     res.status(500).send({ error: 'error' })
   }
 })
+
+router.put('/students/:student_id', async (req:any, res:any) => {
+  try {
+    console.log('------------------------------------')
+    const need = req.body
+    console.log(need)
+    const studentId = req.params.student_id
+    const student = await studentServices.updateStudent(need, studentId)
+    res.status(200).send(student)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({ error: 'error' })
+  }
+})

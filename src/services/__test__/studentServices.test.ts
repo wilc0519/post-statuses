@@ -12,7 +12,7 @@ app.listen(function () {
 test('Given the information of a student for the first time save in the database obtain student data ', async () => {
   const firstName = 'Carlos'
   const lastName = 'Jara'
-  const email = 'carljar@tsdec.com'
+  const email = 'carljar@tsdeh.com'
   const cellPhone = '0936912159'
   const dateOfBirth = new Date()
 
