@@ -12,7 +12,7 @@ app.listen(function () {
 test('Given the information of a student for the first time save in the database obtain student data ', async () => {
   const firstName = 'Carlos'
   const lastName = 'Jara'
-  const email = 'carljar@tsdeh.com'
+  const email = 'carljar@tsdei.com'
   const cellPhone = '0936912159'
   const dateOfBirth = new Date()
 
@@ -35,4 +35,11 @@ test('Get the existing student registration number in the database. ', async () 
   const email = 'carljar@tsdea.com'
   const students = await studentServices.findStudents(email)
   expect(students).not.toBeNull()
+})
+
+test('Given the student\'s id delete their record from the database ', async () => {
+  const id = 10
+  await studentServices.deleteStudent(id)
+  const studentfound = await Student.findByPk(id)
+  expect(studentfound).toBeNull()
 })

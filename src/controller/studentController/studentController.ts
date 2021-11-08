@@ -32,14 +32,23 @@ router.get('/students', async (req, res) => {
 
 router.put('/students/:student_id', async (req:any, res:any) => {
   try {
-    console.log('------------------------------------')
     const need = req.body
-    console.log(need)
     const studentId = req.params.student_id
     const student = await studentServices.updateStudent(need, studentId)
     res.status(200).send(student)
   } catch (error) {
     console.log(error)
     res.status(500).send({ error: 'error' })
+  }
+})
+
+router.delete('/students/:student_id', async (req, res) => {
+  try {
+    const studentId = req.params.student_id
+    const student = await studentServices.deleteStudent(studentId)
+    res.status(200).send(student)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send(error)
   }
 })
