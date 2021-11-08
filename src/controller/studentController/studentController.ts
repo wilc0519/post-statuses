@@ -22,7 +22,7 @@ router.post('/students', async (req, res) => {
 router.get('/students', async (req, res) => {
   try {
     const emailToFindStudent = req.query.email
-    const students = await studentServices.findAllStudents(emailToFindStudent)
+    const students = await studentServices.findStudents(emailToFindStudent)
     res.status(200).send(students)
   } catch (error) {
     console.log(error)

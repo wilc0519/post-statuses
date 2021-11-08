@@ -12,7 +12,7 @@ app.listen(function () {
 test('Given the information of a student for the first time save in the database obtain student data ', async () => {
   const firstName = 'Carlos'
   const lastName = 'Jara'
-  const email = 'carljar@tsdea.com'
+  const email = 'carljar@tsdec.com'
   const cellPhone = '0936912159'
   const dateOfBirth = new Date()
 
@@ -27,12 +27,12 @@ test('Given the information of a student for the first time save in the database
 
 test('Get the existing student registration number in the database. ', async () => {
   const email = null
-  const students = await studentServices.findAllStudents(email)
+  const students = await studentServices.findStudents(email)
   expect(students).not.toBeNull()
 })
 
 test('Get the existing student registration number in the database. ', async () => {
   const email = 'carljar@tsdea.com'
-  const students = await studentServices.findAllStudents(email)
+  const students = await studentServices.findStudents(email)
   expect(students).not.toBeNull()
 })

@@ -10,7 +10,7 @@ const createStudents = async (firstName, lastName, email, cellPhone, dateOfBirth
     throw error
   }
 }
-const findAllStudents = async (emailToFindStudent) => {
+const findStudents = async (emailToFindStudent) => {
   try {
     if (emailToFindStudent) {
       const student = await Student.findOne({
@@ -30,7 +30,8 @@ const findAllStudents = async (emailToFindStudent) => {
     throw error
   }
 }
+
 export default {
   createStudents,
-  findAllStudents
+  findStudents
 }
