@@ -1,3 +1,4 @@
+import { Status } from './status'
 import {
   Table,
   Model,
@@ -10,7 +11,8 @@ import {
   DataType,
   AutoIncrement,
   Validate,
-  Unique
+  Unique,
+  HasMany
 
 } from 'sequelize-typescript'
 
@@ -58,4 +60,7 @@ export class Student extends Model {
 
     @DeletedAt
     deletedAt:Date
+
+    @HasMany(() => Status)
+    status: Status[]
 }
