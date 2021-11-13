@@ -1,46 +1,42 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Students', {
+    return queryInterface.createTable('Statuses', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        primaryKey: true
       },
-      firstName: {
-        type: Sequelize.STRING
-      },
-      lastName: {
-        type: Sequelize.STRING
-      },
-      email: {
+      descriptionStatus: {
         type: Sequelize.STRING,
-        unique: true
+        allowNull: false
       },
-      dateOfBirth: {
-        type: Sequelize.DATE
-      },
-      cellPhone: {
-        type: Sequelize.STRING
+      studentId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Students',
+          key: 'id'
+        }
       },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: () => new Date()
+        defautvalue: () => new Date()
       },
       updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: () => new Date()
       },
-      deletedAt: {
+      deleteAt: {
         type: Sequelize.DATE,
         allowNull: true
       }
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Students')
+    return queryInterface.dropTable('Statuses')
   }
 }
