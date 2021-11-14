@@ -41,7 +41,7 @@ const updateStudent = async (need, studentId) => {
   try {
     const student = await Student.findByPk(studentId)
     if (student != null) {
-      student?.update(need)
+      await student?.update(need)
       return student
     }
     return 'student not found'
