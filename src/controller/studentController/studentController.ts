@@ -1,4 +1,4 @@
-import studentServices from '../../services/studentServices'
+import studentServices from '../../services/studentServices/studentServices'
 import express from 'express'
 
 export const router = express.Router()

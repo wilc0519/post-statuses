@@ -1,6 +1,6 @@
 import express from 'express'
 import { sequelize } from './src/models/index'
-import { router } from './src/controller/studentController/studentController'
+import { router } from './src/controller/index'
 export const app = express()
 
 const PORT = process.env.PORT || 3000

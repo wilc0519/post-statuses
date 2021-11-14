@@ -62,5 +62,5 @@ export class Student extends Model {
     deletedAt:Date
 
     @HasMany(() => Status)
-    status: Status[]
+    statuses: Status[]
 }

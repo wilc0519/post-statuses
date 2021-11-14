@@ -1,4 +1,4 @@
-import { Student } from '../models/student'
+import { Student } from '../../models/student'
 import 'babel-polyfill'
 
 const createStudents = async (firstName, lastName, email, cellPhone, dateOfBirth) => {

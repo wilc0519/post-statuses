@@ -1,7 +1,7 @@
 import studentServices from '../studentServices'
-import { Student } from '../../models/student'
-import { app } from '../../../app'
-import { sequelize } from '../../models/index'
+import { Student } from '../../../models/student'
+import { app } from '../../../../app'
+import { sequelize } from '../../../models/index'
 app.listen(function () {
   sequelize.authenticate().then(() => {
   }).catch((error:Error) => {
