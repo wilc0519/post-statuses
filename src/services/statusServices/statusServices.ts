@@ -59,8 +59,28 @@ const updateStatus = async (studentId, statusId, descriptionStatus) => {
   }
 }
 
+const deleteStatus = async (studentId, statusId) => {
+  try {
+    const status = await Status.findOne({
+      where: {
+        studentId,
+        id: statusId
+      }
+    })
+    if (status) {
+      await status.destroy()
+      return 'status deleted'
+    }
+    return 'status not found'
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export default {
   createStatus,
   findStatus,
-  updateStatus
+  updateStatus,
+  deleteStatus
 }
