@@ -40,7 +40,27 @@ const findStatus = async (studentId, statusId) => {
   }
 }
 
+const updateStatus = async (studentId, statusId, descriptionStatus) => {
+  try {
+    const status = await Status.findOne({
+      where: {
+        studentId: studentId,
+        id: statusId
+      }
+    })
+    if (status) {
+      await status.update({ descriptionStatus })
+      return status
+    }
+    return 'status not found'
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export default {
   createStatus,
-  findStatus
+  findStatus,
+  updateStatus
 }
