@@ -17,9 +17,9 @@ import {
 @Table({
   timestamps: true,
   paranoid: true,
-  createdAt: 'createAt',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  deletedAt: 'deletedAta',
+  deletedAt: 'deletedAt',
   freezeTableName: true,
   tableName: 'Statuses'
 })
@@ -37,7 +37,7 @@ export class Status extends Model {
   @ForeignKey(() => Student)
   @AllowNull(false)
   @Column({ type: DataType.INTEGER })
-  StudentId:number
+  studentId:number
 
   @BelongsTo(() => Student)
   student: Student
