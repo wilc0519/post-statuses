@@ -13,3 +13,15 @@ router.post('/students/:student_id/statuses', async (req, res) => {
     res.status(500).send({ error: 'error' })
   }
 })
+
+router.get('/students/:student_id/statuses', async (req, res) => {
+  const studentId = req.params.student_id
+  const statusId = req.query.id
+  try {
+    const status = await statusServices.findStatus(studentId, statusId)
+    res.status(200).send(status)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({ error: 'error' })
+  }
+})

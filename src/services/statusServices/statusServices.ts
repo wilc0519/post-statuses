@@ -15,6 +15,32 @@ const createStatus = async (descriptionStatus, studentId) => {
   }
 }
 
+const findStatus = async (studentId, statusId) => {
+  try {
+    const student = await Student.findByPk(studentId)
+    if (student) {
+      if (statusId) {
+        const status = await Status.findOne({
+          where: {
+            id: statusId,
+            studentId
+          }
+        })
+        return status
+      }
+      const statuses = await Status.findAll({
+        where: { studentId }
+      })
+      return statuses
+    }
+    return 'Student not found'
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export default {
-  createStatus
+  createStatus,
+  findStatus
 }
