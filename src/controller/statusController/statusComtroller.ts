@@ -38,3 +38,15 @@ router.put('/students/:student_id/statuses/:status_id', async (req, res) => {
     res.status(500).send({ error: 'error' })
   }
 })
+
+router.delete('/students/:student_id/statuses/:status_id', async (req, res) => {
+  const studentId = req.params.student_id
+  const statusId = req.params.status_id
+  try {
+    const status = await statusServices.deleteStatus(studentId, statusId)
+    res.status(200).send(status)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send({ error: 'error' })
+  }
+})
