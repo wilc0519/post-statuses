@@ -1,4 +1,5 @@
-import { Student } from '../../models/student'
+import { Student } from '../models/student'
+import { NotFoundError } from '../error/customerError'
 import 'babel-polyfill'
 
 const createStudents = async (firstName, lastName, email, cellPhone, dateOfBirth) => {
@@ -20,8 +21,9 @@ const findStudents = async (emailToFindStudent) => {
       })
       if (student) {
         return student
+      } else {
+        throw new NotFoundError('Student not found')
       }
-      return 'Student not found'
     }
     const students = await Student.findAll()
     return students
@@ -36,15 +38,16 @@ const updateStudent = async (need, studentId) => {
   const allowedUpdates = ['firstName', 'lastName', 'email', 'dateOfBirth', 'cellPhone']
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
   if (!isValidOperation) {
-    return 'Invalid update'
+    throw new NotFoundError('Invalid update')
   }
   try {
     const student = await Student.findByPk(studentId)
-    if (student != null) {
+    if (student) {
       await student?.update(need)
       return student
+    } else {
+      throw new NotFoundError('Student not found')
     }
-    return 'student not found'
   } catch (error) {
     console.log(error)
     throw error
@@ -57,8 +60,9 @@ const deleteStudent = async (studentId:number) => {
     if (student) {
       await student.destroy()
       return 'student deleted'
+    } else {
+      throw new NotFoundError('Student not found')
     }
-    return 'student not found'
   } catch (error) {
     console.log(error)
     throw error

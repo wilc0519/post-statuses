@@ -1,7 +1,7 @@
 import studentServices from '../studentServices'
-import { Student } from '../../../models/student'
-import { app } from '../../../../app'
-import { sequelize } from '../../../models/index'
+import { Student } from '../../models/student'
+import { app } from '../../../app'
+import { sequelize } from '../../models/index'
 app.listen(function () {
   sequelize.authenticate().then(() => {
   }).catch((error:Error) => {
@@ -9,10 +9,10 @@ app.listen(function () {
   })
 })
 
-test('Given the information of a student for the first time save in the database obtain student data ', async () => {
+test('Given the information of a student for the first time save in the database obtain student not null ', async () => {
   const firstName = 'Carlos'
   const lastName = 'Jara'
-  const email = 'carljar@tsdei.com'
+  const email = 'carljar@tsjsa.com'
   const cellPhone = '0936912159'
   const dateOfBirth = new Date()
 

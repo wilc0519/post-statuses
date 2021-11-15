@@ -1,6 +1,6 @@
 import express from 'express'
-import { router as studentRouter } from './studentController/studentController'
-import { router as statusRouter } from './statusController/statusComtroller'
+import { router as studentRouter } from './studentController'
+import { router as statusRouter } from './statusController'
 const router = express.Router()
 
 router.use(studentRouter)
