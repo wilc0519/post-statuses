@@ -13,6 +13,7 @@ import {
   Table,
   UpdatedAt
 } from 'sequelize-typescript'
+import { DataTypes } from 'sequelize'
 
 @Table({
   timestamps: true,
@@ -38,6 +39,10 @@ export class Status extends Model {
   @AllowNull(false)
   @Column({ type: DataType.INTEGER })
   studentId:number
+
+  @AllowNull(false)
+  @Column({ type: DataTypes.ARRAY(DataTypes.STRING) })
+  technology: string[]
 
   @BelongsTo(() => Student)
   student: Student

@@ -2,11 +2,11 @@ import { Status } from '../models/status'
 import { Student } from '../models/student'
 import { NotFoundError } from '../error/customerError'
 import 'babel-polyfill'
-const createStatus = async (descriptionStatus, studentId) => {
+const createStatus = async (descriptionStatus, studentId, technology) => {
   try {
     const student = await Student.findByPk(studentId)
     if (student) {
-      const status = await Status.create({ descriptionStatus, studentId })
+      const status = await Status.create({ descriptionStatus, studentId, technology })
       return status
     } else {
       throw new NotFoundError('Student not found')
