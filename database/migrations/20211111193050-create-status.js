@@ -20,6 +20,10 @@ module.exports = {
           key: 'id'
         }
       },
+      technology: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: false
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

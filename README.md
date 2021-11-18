@@ -10,7 +10,7 @@ Postman we will use it for REST API testing
 
 2.- Dependencies installation
 
-    To install the dependencies, in the terminal of our work team we go to the root of the project and write the following command.
+To install the dependencies, in the terminal of our work team we go to \n the root of the project and write the following command.
 
     npm install
 

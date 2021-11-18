@@ -6,8 +6,9 @@ export const router = express.Router()
 router.post('/students/:student_id/statuses', async (req, res) => {
   const studentId = req.params.student_id
   const descriptionStatus = req.body.descriptionStatus
+  const technology = req.body.technology
   try {
-    const status = await statusServices.createStatus(descriptionStatus, studentId)
+    const status = await statusServices.createStatus(descriptionStatus, studentId, technology)
     res.status(200).send(status)
   } catch (error) {
     if (error instanceof NotFoundError) {
